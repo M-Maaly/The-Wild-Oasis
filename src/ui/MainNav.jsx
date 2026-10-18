@@ -12,6 +12,11 @@ const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+
+  @media (max-width: 62em) {
+    flex-direction: row;
+    gap: 0.4rem;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -26,6 +31,16 @@ const StyledNavLink = styled(NavLink)`
     font-weight: 500;
     padding: 1.2rem 2.4rem;
     transition: all 0.3s;
+
+    @media (max-width: 62em) {
+      padding: 0.8rem 1.2rem;
+      font-size: 1.4rem;
+    }
+    @media (max-width: 34em) {
+      & span {
+        display: none;
+      }
+    }
   }
 
   /* This works because react-router places the active class on the active NavLink */

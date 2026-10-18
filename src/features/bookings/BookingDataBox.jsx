@@ -30,6 +30,12 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+
+  @media (max-width: 34em) {
+    padding: 1.6rem;
+  }
 
   svg {
     height: 3.2rem;
@@ -53,6 +59,10 @@ const Header = styled.header`
 
 const Section = styled.section`
   padding: 3.2rem 4rem 1.2rem;
+
+  @media (max-width: 34em) {
+    padding: 2rem 1.6rem 1.2rem;
+  }
 `;
 
 const Guest = styled.div`

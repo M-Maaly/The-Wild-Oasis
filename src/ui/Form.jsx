@@ -16,7 +16,16 @@ const Form = styled.form`
     props.type === "modal" &&
     css`
       width: 80rem;
+      max-width: 100%;
     `}
+
+  @media (max-width: 34em) {
+    ${(props) =>
+      props.type === "regular" &&
+      css`
+        padding: 1.6rem;
+      `}
+  }
     
   overflow: hidden;
   font-size: 1.4rem;

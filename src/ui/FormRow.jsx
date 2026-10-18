@@ -7,6 +7,11 @@ const StyledFormRow = styled.div`
   grid-template-columns: 24rem 1fr 1.2fr;
   gap: 2.4rem;
 
+  @media (max-width: 48em) {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
   padding: 1.2rem 0;
 
   &:first-child {
