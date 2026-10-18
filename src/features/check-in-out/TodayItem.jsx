@@ -11,6 +11,19 @@ const StyledTodayItem = styled.li`
   gap: 1.2rem;
   align-items: center;
 
+  @media (max-width: 34em) {
+    grid-template-columns: 8rem 2rem 1fr;
+    row-gap: 0.6rem;
+
+    & > :nth-child(4) {
+      grid-column: 1 / 3;
+    }
+    & > :nth-child(5) {
+      grid-column: 3;
+      justify-self: end;
+    }
+  }
+
   font-size: 1.4rem;
   padding: 0.8rem 0;
   border-bottom: 1px solid var(--color-grey-100);

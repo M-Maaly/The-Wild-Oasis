@@ -99,16 +99,17 @@ function SalesChart({ bookings, numDays }) {
       </Heading>
 
       <ResponsiveContainer height={300} width={"100%"}>
-        <AreaChart data={data}>
+        <AreaChart data={data} margin={{ left: -16, right: 8 }}>
           <CartesianGrid strokeDasharray={4} />
           <XAxis
             dataKey={"label"}
-            tick={{ fill: colors.text }}
+            minTickGap={24}
+            tick={{ fill: colors.text, fontSize: 12 }}
             tickLine={{ stroke: colors.text }}
           />
           <YAxis
             unit={"$"}
-            tick={{ fill: colors.text }}
+            tick={{ fill: colors.text, fontSize: 12 }}
             tickLine={{ stroke: colors.text }}
           />
           <Tooltip

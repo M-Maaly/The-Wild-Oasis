@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 import Heading from "../../ui/Heading";
 import {
   Cell,
@@ -150,6 +151,16 @@ function prepareData(startData, stays) {
 
 function DurationChart({ confirmedStays }) {
   const { isDarkMode } = useDarkMode();
+  const [isNarrow, setIsNarrow] = useState(
+    () => window.matchMedia("(max-width: 34em)").matches
+  );
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 34em)");
+    const onChange = (e) => setIsNarrow(e.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
 
   const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, confirmedStays);
@@ -158,16 +169,16 @@ function DurationChart({ confirmedStays }) {
     <ChartBox>
       <Heading as={"h2"}>Stay duration summary</Heading>
 
-      <ResponsiveContainer width={"100%"} height={240}>
+      <ResponsiveContainer width={"100%"} height={isNarrow ? 320 : 240}>
         <PieChart>
           <Pie
             data={data}
             nameKey={"duration"}
             dataKey={"value"}
-            innerRadius={85}
-            outerRadius={110}
-            cx={"40%"}
-            cy={"50%"}
+            innerRadius={isNarrow ? 60 : 85}
+            outerRadius={isNarrow ? 85 : 110}
+            cx={isNarrow ? "50%" : "40%"}
+            cy={isNarrow ? "40%" : "50%"}
             paddingAngle={3}
           >
             {data.map((entry) => (
@@ -194,10 +205,10 @@ function DurationChart({ confirmedStays }) {
           />
 
           <Legend
-            verticalAlign="middle"
-            align="right"
-            width={"30%"}
-            layout="vertical"
+            verticalAlign={isNarrow ? "bottom" : "middle"}
+            align={isNarrow ? "center" : "right"}
+            width={isNarrow ? "100%" : "30%"}
+            layout={isNarrow ? "horizontal" : "vertical"}
             iconSize={15}
             iconType="circle"
           />
